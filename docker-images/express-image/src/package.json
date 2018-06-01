@@ -1,0 +1,15 @@
+{
+  "name": "zedsdead95",
+  "version": "0.1.0",
+  "description": "Test for express image -http",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Walid Koubaa",
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.0.16",
+    "express": "^4.16.3"
+  }
+}
