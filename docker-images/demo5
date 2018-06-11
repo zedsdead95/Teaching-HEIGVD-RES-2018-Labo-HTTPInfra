@@ -1,0 +1,20 @@
+#!/bin/bash
+ 
+ docker kill $(docker ps -q)
+ docker rm $(docker ps -a -q)
+ 
+ docker build -t res/apache_php apache-php-image/.
+ docker build -t res/express express-image/.
+ docker build -t res/apache_rp apache-reverse-proxy/.
+
+ docker run -d res/apache_php 
+ docker run -d res/apache_php 
+ docker run -d res/apache_php 
+ docker run --name apache_static -d res/apache_php
+ docker run -d res/express
+ docker run -d res/express
+ docker run --name express_dynamic -d res/express
+ docker inspect express_dynamic | grep -i ipaddress
+ docker inspect apache_static | grep -i ipaddress
+ docker ps -a
+ docker run -e STATIC_APP=172.17.0.5:80 -e DYNAMIC_APP=172.17.0.8:3000 --name apache_rp -p 8080:80 res/apache_rp 

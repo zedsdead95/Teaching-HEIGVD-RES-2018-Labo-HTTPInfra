@@ -1,0 +1,7 @@
+#!/bin/bash
+
+	docker kill $(docker ps -q)
+	docker rm $(docker ps -a -q)
+
+	docker build -t res/express express-image/.
+	docker run -d --name express_dynamic -p 3000:3000 res/express
