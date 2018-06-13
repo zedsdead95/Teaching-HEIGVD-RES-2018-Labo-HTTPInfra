@@ -5,12 +5,11 @@
 
 <VirtualHost *:80>
 	ServerName demo.res.ch
-	
-	ProxyPass "/api/dockers/" "http://172.17.0.3:3000/"
-	ProxyPassReverse "/api/dockers/" "http://172.17.0.3:3000/"
 
-    ProxyPass "/" "http://172.17.0.2:80/"
-	ProxyPassReverse "/" "http://172.17.0.2:80/"
-	
+	ProxyPass "/api/dockers/" "http://<?php print "$DYNAMIC_APP"?>/"
+	ProxyPassReverse "/api/dockers/" "http://<?php print "$DYNAMIC_APP"?>/"
 
-</VirtualHost>
+    ProxyPass "/" "http://<?php print "$STATIC_APP"?>/"
+	ProxyPassReverse "/" "http://<?php print "$STATIC_APP"?>/"
+
+</VirtualHost>	

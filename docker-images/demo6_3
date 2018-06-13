@@ -18,3 +18,10 @@
  docker inspect apache_static | grep -i ipaddress
  docker ps -a
  docker run -d -e STATIC_APP=172.17.0.5:80 -e DYNAMIC_APP=172.17.0.8:3000 --name apache_rp -p 8080:80 res/apache_rp 
+
+ docker volume create portainer_data
+ 
+ docker run -d -p 9000:9000 --name portainer --restart always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer
+ 
+ docker ps -a
+ 
